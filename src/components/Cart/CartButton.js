@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
-import styles from './CartButton.module.css';
 import { uiActions } from '../../store/ui-slice';
+import styles from './CartButton.module.css';
 
 const CartButton = () => {
   const dispatchFn = useDispatch();

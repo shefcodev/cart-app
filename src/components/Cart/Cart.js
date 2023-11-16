@@ -1,27 +1,17 @@
-import { Fragment } from 'react';
-
-import { useSelector } from 'react-redux';
-
 import Card from '../UI/Card';
 import styles from './Cart.module.css';
 import CartItem from './CartItem';
 
 const Cart = () => {
-  const cartIsVisible = useSelector((state) => state.cartIsVisible);
-
   return (
-    <Fragment>
-      {cartIsVisible && (
-        <Card className={styles.cart}>
-          <h2>Your Shopping Cart</h2>
-          <ul>
-            <CartItem
-              item={{ title: 'Test Item', quantity: 3, total: 18, price: 6 }}
-            />
-          </ul>
-        </Card>
-      )}
-    </Fragment>
+    <Card className={styles.cart}>
+      <h2>Your Shopping Cart</h2>
+      <ul>
+        <CartItem
+          item={{ title: 'Test Item', quantity: 3, total: 18, price: 6 }}
+        />
+      </ul>
+    </Card>
   );
 };
 
