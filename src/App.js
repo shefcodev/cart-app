@@ -5,11 +5,11 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 
 const App = () => {
-  const cartIsVisible = useSelector((state) => state.ui.cartIsVisible);
+  const showCart = useSelector((state) => state.ui.cartIsVisible);
 
   return (
     <Layout>
-      {cartIsVisible && <Cart />}
+      {showCart && <Cart />}
       <Products />
     </Layout>
   );
