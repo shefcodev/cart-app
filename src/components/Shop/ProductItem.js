@@ -8,6 +8,14 @@ const ProductItem = ({ title, id, price, description }) => {
   const dispatchFn = useDispatch();
 
   const addItemToCartHandler = () => {
+    // fetch('https://redux-cart-8ce23-default-rtdb.firebaseio.com/cart.json', {
+    //   method: 'POST',
+    //   body: JSON.stringify(newCart),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // });
+
     dispatchFn(cartActions.addItemToCart({ title, id, price, description }));
   };
 
@@ -28,3 +36,31 @@ const ProductItem = ({ title, id, price, description }) => {
 };
 
 export default ProductItem;
+
+// const newTotalQunatity = cart.totalQuantity + 1;
+// const updatedItems = cart.items.slice();
+// const existingItem = updatedItems.find((item) => item.itemId === id);
+
+// if (existingItem) {
+//   const updatedItem = { ...existingItem };
+//   updatedItem.quantity++;
+//   updatedItem.totalPrice += price;
+//   const existingItemIndex = updatedItems.findIndex(
+//     (item) => item.itemId === id
+//   );
+//   updatedItems[existingItemIndex] = updatedItem;
+// } else {
+//   updatedItems.push({
+//     name: title,
+//     itemId: id,
+//     price: price,
+//     quantity: 1,
+//     totalPrice: 1,
+//   });
+// }
+
+// const newCart = {
+//   items: updatedItems,
+//   totalQuantity: newTotalQunatity,
+// };
+// dispatchFn(cartActions.replaceCart(newCart));
