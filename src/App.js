@@ -17,16 +17,18 @@ const App = () => {
 
   useEffect(() => {
     dispatchFn(fetchCartData());
-    console.log(cart);
   }, [dispatchFn]);
 
   useEffect(() => {
     if (isInitial) {
+      // dispatchFn(fetchCartData()); Can alternatively fetch cart-data onload here
       isInitial = false;
       return;
     }
 
-    dispatchFn(sendCartData(cart));
+    if (cart.changed) {
+      dispatchFn(sendCartData(cart));
+    }
   }, [cart, dispatchFn]);
 
   return (

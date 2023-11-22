@@ -13,13 +13,18 @@ export const fetchCartData = () => {
       }
 
       const data = await response.json();
-
       return data;
     };
 
     try {
       const cartData = await fetchData();
-      dispatchFn(cartActions.replaceCart(cartData));
+
+      dispatchFn(
+        cartActions.replaceCart({
+          items: cartData.items || [],
+          totalQuantity: cartData.totalQuantity,
+        })
+      );
     } catch (error) {
       dispatchFn(
         uiActions.showNotification({
@@ -47,7 +52,10 @@ export const sendCartData = (cart) => {
         'https://redux-cart-8ce23-default-rtdb.firebaseio.com//cart.json',
         {
           method: 'PUT',
-          body: JSON.stringify(cart),
+          body: JSON.stringify({
+            items: cart.items,
+            totalQuantity: cart.totalQuantity,
+          }),
         }
       );
 
